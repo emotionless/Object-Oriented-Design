@@ -35,7 +35,7 @@ public class ThinCrustPizza extends Pizza {
 
 public abstract class ToppingsDecorator extends Pizza {
     Pizza Pizza;
-    public abstract String getDescriptionWithToppings();
+    public abstract String getDescription();
 }
 
 public class Cheese extends ToppingsDecorator {
@@ -43,7 +43,7 @@ public class Cheese extends ToppingsDecorator {
         this.pizza = pizza;
     }
 
-    public String getDescriptionWithToppings() {
+    public String getDescription() {
         return this.pizza.getDescription() + ", " + "cheese";
     }
     
@@ -52,12 +52,12 @@ public class Cheese extends ToppingsDecorator {
     }
 }
 
-public class Olives extends Pizza {
+public class Olives extends ToppingsDecorator {
     public Olives(Pizza pizza) {
         this.pizza = pizza;
     }
 
-    public String getDescriptionWithToppings() {
+    public String getDescription() {
         return pizza.getDescription() + ", olives";
     }
 
@@ -75,7 +75,7 @@ public class PizzaStore {
         Pizza cheesePizza = new Cheese(pizza);
         Pizza cheesedOlivePizza = new Olives(cheesePizza);
 
-        System.out.println("CheeseOlivePizza: Description: " + cheesedOlivePizza.getDescriptionWithToppings());
+        System.out.println("CheeseOlivePizza: Description: " + getDescription());
         System.out.println("CheeseOlivePizza: Cost: " + cheesedOlivePizza.getCost());
     }
 }
